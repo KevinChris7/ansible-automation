@@ -1,0 +1,23 @@
+    - name: Install and Configure Database 
+      apt: 
+        name: "{{ item }}" 
+        state: latest
+      loop: 
+        - mysql-server
+        - mysql-client
+    - name: Start the Database Service 
+      service: 
+        name: mysql
+        state: started 
+        enabled: yes
+    - name: Create Database 
+      mysql_db:
+        name: "{{ db_name }}"
+        state: present 
+    - name: Create Database users 
+      mysql_user: 
+        name: "{{ db_user }}"
+        password: "{{ db_password }}"
+        priv: "*.*:ALL"
+        state: present 
+        host: "%"

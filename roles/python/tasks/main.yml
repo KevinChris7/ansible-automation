@@ -1,0 +1,12 @@
+---
+# tasks file for python
+    - name: Install all Dependencies
+      apt: 
+        name: "{{ item }}"
+        state: latest
+      loop:
+        - python
+        - python-setuptools
+        - python-dev build-essential
+        - python-pip
+        - python-mysqldb

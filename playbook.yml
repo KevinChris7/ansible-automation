@@ -1,0 +1,12 @@
+# Basic Webapplication Playbook 
+
+- name: Deploy the web application
+  hosts: db_and_web_server*
+  roles:
+    - python
+    - mysqldb 
+    - flask_webapp
+
+
+
+
